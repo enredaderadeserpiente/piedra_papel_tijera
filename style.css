@@ -7,5 +7,13 @@
 }
 .jugar{
 
+  margin-top: 60px;
+}
+.jumbotron{
   margin-top: 40px;
 }
+ .titulo h3{
+   margin-top: 60px;
+   text-align: center;
+   font-size: 40px;
+ }

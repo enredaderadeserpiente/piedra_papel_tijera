@@ -17,24 +17,39 @@
 </head>
 <body>
 <script src="script.js"></script>
+<section class = "titulo">
+  <h3> Bienvenido a piedra, papel o tijera, elige una para comenzar </h3>
+</section>
+
 <div class="container">
     <div class="row">
       <div class="center">
         <section class="usuario_ppt">
           <div class="col-md-4">
-            <img src="images/piedra.png" alt="piedra" name="piedra">
+            <img src="images/piedra.png" alt="piedra" name="piedra" id="elige" >
           </div>
           <div class="col-md-4">
-            <img src="images/papel.png" alt="papel" name="papel">
+            <img src="images/papel.png" alt="papel" name="papel" id="elige">
           </div>
           <div class="col-md-4">
-            <img src="images/tijera.png" alt="tijera" name="tijera" onclick='alert("Hola")'>
+            <img src="images/tijera.png" alt="tijera" name="tijera" id="elige">
           </div>
-          <div class="col-md-offset-4 col-md-4 ">
-              <button type="button" class="btn btn-primary center jugar" aria-haspopup="true" aria-expanded="false" name = "jugar">Jugar</button>
-          </div>
+
         </section>
 
+    </div>
+  </div>
+  <div class=row>
+    <div class="col-md-offset-4 col-md-4 ">
+        <button type="button" class="btn btn-primary center jugar" aria-haspopup="true" aria-expanded="false" name = "jugar">Jugar</button>
+    </div>
+    <div style = "text-align:center" class="col-md-12">
+      <div class="jumbotron">
+        <h2></h2>
+        <h1></h1>
+        <h4></h4>
+          <p></p>
+        </div>
     </div>
   </div>
 
@@ -43,23 +58,37 @@ var piedra = document.getElementsByName("piedra")[0];
 var papel = document.getElementsByName("papel")[0];
 var tijera = document.getElementsByName("tijera")[0];
 var jugar = document.getElementsByName("jugar")[0];
+var elige = document.getElementById("elige");
+var h2 = document.getElementsByTagName("h2")[0];
+var h1 = document.getElementsByTagName("h1")[0];
+var h4 = document.getElementsByTagName("h4")[0];
+
 
 var azar = "";
 var input_computador = "";
+var puntaje = 0;
+
+
 
 piedra.onclick = function(){
-      input_usuario = "piedra";
-
+      input_usuario = "Piedra";
+      papel.style.width = "200px"
+      tijera.style.width = "200px"
+      piedra.style.width = "300px"
 
   }
 papel.onclick = function(){
-      input_usuario = "papel";
-
+      input_usuario = "Papel";
+      piedra.style.width = "200px"
+      tijera.style.width = "200px"
+      papel.style.width = "300px"
 
   }
 tijera.onclick = function(){
-      input_usuario = "tijera";
-
+      input_usuario = "Tijera";
+      papel.style.width = "200px"
+      piedra.style.width = "200px"
+      tijera.style.width = "300px"
 
   }
 
@@ -67,43 +96,57 @@ jugar.onclick =  function(){
       azar =  Math.round(Math.random() * 3);
       switch(azar) {
           case 1:
-              input_computador = "piedra";
-              alert("Computador elige: " + input_computador);
+              input_computador = "Piedra";
+              h2.innerHTML = "Computador elige: " + input_computador;
+
               break;
 
           case 2:
-              input_computador = "papel";
+              input_computador = "Papel";
 
-              alert("Computador elige: " + input_computador);
+              h2.innerHTML = "Computador elige: " + input_computador;
               break;
           case 3:
-              input_computador = "tijera";
-              alert("Computador elige: " + input_computador);
+              input_computador = "Tijera";
+              h2.innerHTML = "Computador elige: " + input_computador;
               break;
       }
 
-      if (input_computador == "piedra" && input_usuario == "tijera") {
-          alert("Gana computador");
+      if (input_computador == "Piedra" && input_usuario == "Tijera") {
+          h1.innerHTML = "Gana computador " ;
+          puntaje -= 1;
+          h4.innerHTML = "Puntaje: " + puntaje ;
       }
-      if (input_computador == "papel" && input_usuario == "piedra") {
-          alert("Gana computador");
+      if (input_computador == "Papel" && input_usuario == "Piedra") {
+          h1.innerHTML = "Gana computador " ;
+          puntaje -= 1;
+          h4.innerHTML = "Puntaje: " + puntaje ;
       }
-      if (input_computador == "tijera" && input_usuario == "papel") {
-          alert("Gana computador");
+      if (input_computador == "Tijera" && input_usuario == "Papel") {
+          h1.innerHTML = "Gana computador " ;
+          puntaje -= 1;
+          h4.innerHTML = "Puntaje: " + puntaje ;
       }
 
       if (input_computador == input_usuario) {
-          alert("Es un empate");
+          h1.innerHTML = "Es un empate" ;
+          h4.innerHTML = "Puntaje: " + puntaje ;
       }
 
-      if (input_usuario == "piedra" && input_computador == "tijera") {
-          alert("Gana usuario");
+      if (input_usuario == "Piedra" && input_computador == "Tijera") {
+          h1.innerHTML = "Gana usuario" ;
+          puntaje += 1;
+          h4.innerHTML = "Puntaje: " + puntaje ;
       }
-      if (input_usuario == "papel" && input_computador == "piedra") {
-          alert("Gana usuario");
+      if (input_usuario == "Papel" && input_computador == "Piedra") {
+          h1.innerHTML = "Gana usuario" ;
+          puntaje += 1;
+          h4.innerHTML = "Puntaje: " + puntaje ;
       }
-      if (input_usuario == "tijera" && input_computador == "papel") {
-          alert("Gana usuario");
+      if (input_usuario == "Tijera" && input_computador == "Papel") {
+          h1.innerHTML = "Gana usuario" ;
+          puntaje += 1;
+          h4.innerHTML = "Puntaje: " + puntaje ;
       }
 
     }
